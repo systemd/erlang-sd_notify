@@ -1,0 +1,12 @@
+{application, sd_notify,
+ [
+  {description, "Erlang sd_notify NIF"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { sd_notify, []}},
+  {env, []}
+ ]}.
