@@ -10,11 +10,11 @@ Build from source
 * To build it execute the docker image.
 * To add it to your package:
 
-    `extract the tar.gz`
-    `mkdir -p /usr/lib64/erlang/lib/sd_notify-0.9/priv/`
-    `mkdir -p /usr/lib64/erlang/lib/sd_notify-0.9/ebin/`
-    `cp priv/* /usr/lib64/erlang/lib/sd_notify-0.9/priv/`
-    `cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.9/ebin/`
+    `extract the tar.gz`  
+    `mkdir -p /usr/lib64/erlang/lib/sd_notify-0.9/priv/`  
+    `mkdir -p /usr/lib64/erlang/lib/sd_notify-0.9/ebin/`  
+    `cp priv/* /usr/lib64/erlang/lib/sd_notify-0.9/priv/`  
+    `cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.9/ebin/`  
 
  
 To test it use: `sd_notify:sd_notify(0,"READY=1")`, in this way:
