@@ -6,13 +6,15 @@ I tested it starting for zero-dependencies RabbitMQ package ([github](https://gi
 
 Build from source
 -
-To build it execute the docker image.
-To add it to your package:
 
+* To build it execute the docker image.
+* To add it to your package:
+
+    extract the tar.gz
     mkdir -p /usr/lib64/erlang/lib/sd_notify-0.9/priv/
     mkdir -p /usr/lib64/erlang/lib/sd_notify-0.9/ebin/
     cp priv/* /usr/lib64/erlang/lib/sd_notify-0.9/priv/
-    cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.1/ebin/
+    cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.9/ebin/
 
  
 To test it use: `sd_notify:sd_notify(0,"READY=1")`, in this way:
@@ -24,7 +26,7 @@ To test it use: `sd_notify:sd_notify(0,"READY=1")`, in this way:
 
 Download the binary
 -
-WIP
+https://github.com/Gsantomaggio/erlang-sd_notify/releases/tag/0.9
 
 RabbitMQ notes:
 -
