@@ -1,0 +1,6 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+
+override_dh_auto_install:
+	make -C packaging/deb TARGET_TOP=$(PWD)/debian/erlang-sd-notify deb-install

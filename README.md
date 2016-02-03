@@ -1,7 +1,7 @@
-`sd_notify` Erlang interface for Centos 7.
+`sd_notify` Erlang interface for Centos 7 and Debian
 ---
 
-This add the `sd_notify` to the Centos erlang package.
+This adds the `sd_notify` to the Centos erlang package.
 I tested it starting for zero-dependencies RabbitMQ package ([github](https://github.com/rabbitmq/erlang-rpm) - [binany](https://www.rabbitmq.com/releases/erlang/) )
 
 Build from source
@@ -38,3 +38,22 @@ RabbitMQ notes:
 RabbitMQ does not need `sd_notify`,.
 This add the feature for the users that in general need `sd_notify`. 
 The integration should be considerer as **experimental**  
+
+
+Building on Debian
+-
+Install the pre-requisites to the build:
+
+        sudo apt-get install build-essential devscripts fakeroot \
+            debhelper erlang-dev libsystemd-dev erlang-eunit
+
+Make the package:
+
+        make deb
+
+Install and test:
+
+        sudo dpkg -i deb-build/erlang-sd-notify_0.9-1_amd64.deb
+        erl
+        1> sd_notify:sd_notify(0,"READY=1").
+        ok

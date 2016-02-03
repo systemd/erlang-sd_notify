@@ -6,4 +6,5 @@
 *.o
 *.so
 .eunit/
+deb-build
 ebin/
