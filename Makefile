@@ -15,3 +15,6 @@ clean:
 
 dialyzer:
 	$(REBAR) dialyze $(REBAR_FLAGS)
+
+deb:
+	cd packaging/deb && $(MAKE) TOPDIR=$(PWD) deb

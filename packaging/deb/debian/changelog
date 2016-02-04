@@ -1,0 +1,5 @@
+erlang-sd-notify (0.9-1) UNRELEASED; urgency=medium
+
+  * Initial release.
+
+ -- Maintainer Name <you@example.com>  Wed, 03 Feb 2016 14:43:18 +0000
