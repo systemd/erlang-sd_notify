@@ -10,7 +10,7 @@ To build it execute the docker image.
  
 Download the binary
 -
-https://github.com/Gsantomaggio/erlang-sd_notify/releases/tag/0.9
+https://github.com/Gsantomaggio/erlang-sd_notify/releases/tag/0.10
 
 Add to Erlang
 -
