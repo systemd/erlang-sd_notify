@@ -10,7 +10,7 @@ To build it execute the docker image.
  
 Download the binary
 -
-https://github.com/Gsantomaggio/erlang-sd_notify/releases/tag/0.9
+https://github.com/Gsantomaggio/erlang-sd_notify/releases/tag/0.10
 
 Add to Erlang
 -
@@ -18,10 +18,10 @@ I suppose you are using the [RabbitMQ Erlang installation].(https://www.rabbitmq
 Follow these steps:
 
 	    extract the tar.gz
-        mkdir -p /usr/lib64/erlang/lib/sd_notify-0.9/priv/
-        mkdir -p /usr/lib64/erlang/lib/sd_notify-0.9/ebin/
-        cp priv/* /usr/lib64/erlang/lib/sd_notify-0.9/priv/
-        cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.9/ebin/
+        mkdir -p /usr/lib64/erlang/lib/sd_notify-0.10/priv/
+        mkdir -p /usr/lib64/erlang/lib/sd_notify-0.10/ebin/
+        cp priv/* /usr/lib64/erlang/lib/sd_notify-0.10/priv/
+        cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.10/ebin/
  
 
 Test
