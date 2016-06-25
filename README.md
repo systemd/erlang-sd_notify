@@ -14,7 +14,7 @@ https://github.com/Gsantomaggio/erlang-sd_notify/releases/tag/0.10
 
 Add to Erlang
 -
-I suppose you are using the [RabbitMQ Erlang installation].(https://www.rabbitmq.com/releases/erlang/)
+I suppose you are using the [RabbitMQ Erlang installation](https://www.rabbitmq.com/releases/erlang/).
 Follow these steps:
 
 	    extract the tar.gz
