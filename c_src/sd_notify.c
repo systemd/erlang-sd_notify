@@ -34,10 +34,10 @@ static ERL_NIF_TERM sd_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 
 	char* state = (char*)enif_alloc(++length);
 	enif_get_string(env, argv[1], state, length, ERL_NIF_LATIN1);
-	sd_notify(unset_environment, state);
+	int result = sd_notify(unset_environment, state);
 	enif_free(state);
 
-	return enif_make_atom(env, "ok");
+	return enif_make_int(env, result);
 }
 
 static ErlNifFunc nif_funcs[] =
