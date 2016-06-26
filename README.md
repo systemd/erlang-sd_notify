@@ -2,42 +2,37 @@
 ---
 
 This adds the `sd_notify` to the Centos erlang package.
-I tested it starting for zero-dependencies RabbitMQ package ([github](https://github.com/rabbitmq/erlang-rpm) - [binany](https://www.rabbitmq.com/releases/erlang/) )
+Tested it starting for zero-dependencies RabbitMQ package ([github](https://github.com/rabbitmq/erlang-rpm) - [binany](https://www.rabbitmq.com/releases/erlang/) )
 
-Build from source
+Build from source `RPM`
 -
-To build it execute the docker image.
+
+ 1.  `docker build -t sd_rpm .`
+ 2. `make`
+ 
+
  
 Download the binary
 -
-https://github.com/Gsantomaggio/erlang-sd_notify/releases/tag/0.10
+https://github.com/systemd/erlang-sd_notify/releases/tag/
 
-Add to Erlang
+Install and Test
 -
-I suppose you are using the [RabbitMQ Erlang installation](https://www.rabbitmq.com/releases/erlang/).
-Follow these steps:
+Install:
 
-	    extract the tar.gz
+        extract the tar.gz
         mkdir -p /usr/lib64/erlang/lib/sd_notify-0.10/priv/
         mkdir -p /usr/lib64/erlang/lib/sd_notify-0.10/ebin/
         cp priv/* /usr/lib64/erlang/lib/sd_notify-0.10/priv/
         cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.10/ebin/
  
 
-Test
--
-To test it use: `sd_notify:sd_notify(0,"READY=1")`, in this way:
+Test:
 
     [root@a499ee66251a]# erl
     ...    
     1> sd_notify:sd_notify(0,"READY=1").
     ok
-
-RabbitMQ notes:
--
-RabbitMQ does not need `sd_notify`,.
-This add the feature for the users that in general need `sd_notify`. 
-The integration should be considerer as **experimental**  
 
 
 Building on Debian
