@@ -34,15 +34,39 @@ static ERL_NIF_TERM sd_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 
 	char* state = (char*)enif_alloc(++length);
 	enif_get_string(env, argv[1], state, length, ERL_NIF_LATIN1);
-	sd_notify(unset_environment, state);
+	int result = sd_notify(unset_environment, state);
 	enif_free(state);
 
-	return enif_make_atom(env, "ok");
+	return enif_make_int(env, result);
 }
+
+
+static ERL_NIF_TERM sd_pid_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+	int unset_environment_pid = 0;
+	enif_get_int(env, argv[0], &unset_environment_pid);
+
+	int unset_environment = 0;
+	enif_get_int(env, argv[1], &unset_environment);
+
+	unsigned int length = 0;
+	enif_get_list_length(env, argv[2], &length);
+
+
+	char* state = (char*)enif_alloc(++length);
+	enif_get_string(env, argv[1], state, length, ERL_NIF_LATIN1);
+	int result = sd_pid_notify(unset_environment_pid, unset_environment, state);
+	enif_free(state);
+
+	return enif_make_int(env, result);
+}
+
 
 static ErlNifFunc nif_funcs[] =
 {
-	{"sd_notify", 2, sd_notify_nif}
+	{"sd_notify", 2, sd_notify_nif},
+	{"sd_pid_notify", 3, sd_pid_notify_nif},
+
 };
 
 ERL_NIF_INIT(sd_notify, nif_funcs, NULL, NULL, NULL, NULL);
