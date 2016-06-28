@@ -62,8 +62,8 @@ sd_notifyf(UnsetEnv, Format, Data) ->
 	sd_notify(UnsetEnv, lists:flatten(io_lib:format(Format, Data))).
 
 
-sd_pid_notifyf(UnsetEnvPid, UnsetEnv, Format, Data) ->
-	sd_pid_notify(UnsetEnvPid, UnsetEnv, lists:flatten(io_lib:format(Format, Data))).
+sd_pid_notifyf(Pid, UnsetEnv, Format, Data) ->
+	sd_pid_notify(Pid, UnsetEnv, lists:flatten(io_lib:format(Format, Data))).
 
 %% ===================================================================
 %% EUnit tests

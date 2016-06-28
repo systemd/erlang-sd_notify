@@ -43,8 +43,8 @@ static ERL_NIF_TERM sd_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 
 static ERL_NIF_TERM sd_pid_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-	int unset_environment_pid = 0;
-	enif_get_int(env, argv[0], &unset_environment_pid);
+	int pid = 0;
+	enif_get_int(env, argv[0], &pid);
 
 	int unset_environment = 0;
 	enif_get_int(env, argv[1], &unset_environment);
@@ -55,7 +55,7 @@ static ERL_NIF_TERM sd_pid_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TE
 
 	char* state = (char*)enif_alloc(++length);
 	enif_get_string(env, argv[1], state, length, ERL_NIF_LATIN1);
-	int result = sd_pid_notify(unset_environment_pid, unset_environment, state);
+	int result = sd_pid_notify(pid, unset_environment, state);
 	enif_free(state);
 
 	return enif_make_int(env, result);
