@@ -27,7 +27,7 @@
 
 -module(sd_notify).
 
--export([sd_notify/2, sd_notifyf/3]).
+-export([sd_notify/2, sd_notifyf/3, sd_pid_notify/3, sd_pid_notifyf/4]).
 
 -on_load(init/0).
 
@@ -54,8 +54,16 @@ init() ->
 sd_notify(_, _) ->
 	?nif_stub.
 
+sd_pid_notify(_, _, _) ->
+	?nif_stub.
+
+
 sd_notifyf(UnsetEnv, Format, Data) ->
 	sd_notify(UnsetEnv, lists:flatten(io_lib:format(Format, Data))).
+
+
+sd_pid_notifyf(Pid, UnsetEnv, Format, Data) ->
+	sd_pid_notify(Pid, UnsetEnv, lists:flatten(io_lib:format(Format, Data))).
 
 %% ===================================================================
 %% EUnit tests
