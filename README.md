@@ -14,7 +14,7 @@ Build from source `RPM`
  
 Download the binary
 -
-https://github.com/systemd/erlang-sd_notify/releases/tag/
+https://github.com/systemd/erlang-sd_notify/releases
 
 Install and Test
 -
