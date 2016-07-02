@@ -12,7 +12,6 @@ RUN  yum install -y  \
 
 
 
-RUN mkdir /build && cd /build
 
 RUN wget https://www.rabbitmq.com/releases/erlang/erlang-18.3-1.el7.centos.x86_64.rpm
 

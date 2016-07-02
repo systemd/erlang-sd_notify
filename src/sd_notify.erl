@@ -57,7 +57,6 @@ sd_notify(_, _) ->
 sd_pid_notify(_, _, _) ->
 	?nif_stub.
 
-
 sd_notifyf(UnsetEnv, Format, Data) ->
 	sd_notify(UnsetEnv, lists:flatten(io_lib:format(Format, Data))).
 
@@ -71,7 +70,7 @@ sd_pid_notifyf(Pid, UnsetEnv, Format, Data) ->
 -ifdef(TEST).
 
 sd_notify_test() ->
-	?assertEqual(ok, ok).
+	?assertEqual(ok, ok). 
 
 sd_notifyf_test() ->
 	?assertEqual(ok, ok).
