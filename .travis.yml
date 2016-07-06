@@ -9,8 +9,8 @@ services:
 - docker
 
 before_install:
-- docker build -t build_ubuntu https://raw.githubusercontent.com/systemd/erlang-sd_notify/master/docker/ubuntu/Dockerfile
+- docker build -t build_ubuntu https://raw.githubusercontent.com/systemd/erlang-sd_notify/master/docker/ubuntu_18/Dockerfile
 - docker images
 
 script:
-- docker run -v $TRAVIS_BUILD_DIR:/sd/ build_ubuntu /bin/sh -c "cd /sd/; make all"
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu /bin/sh -c "cd /home/sd/; make all"
