@@ -30,17 +30,23 @@ Build from source using Docker
 On Ubuntu
 
 ```bash
-    docker build -t build_ubuntu docker/ubuntu/
-    docker run -v {sd_notify_dir}:/sd/ build_ubuntu /bin/sh -c "cd /sd/; make deb"
+    docker build -t build_ubuntu docker/ubuntu_{version}/
+    docker run -v {sd_notify_dir}:/home/sd/ build_ubuntu_{version} /bin/sh -c "cd /home/sd/; make deb"
 ```
 
 on Centos
 
 ```bash
-    docker build -t build_centos docker/centos/
-    docker run -v {sd_notify_dir}:/sd/ build_centos /bin/sh -c "cd /sd/; make all"
+    docker build -t build_centos docker/centos_{version}/
+    docker run -v {sd_notify_dir}:/sd/ build_centos_{version} /bin/sh -c "cd /sd/; make all"
 ```
 
+Example
+
+```bash
+    docker build -t build_centos docker/ubuntu_19/
+    docker run -v /home/gabriele/erlang-sd_notify:/home/sd/ build_ubunut_19 /bin/sh -c "cd /home/sd/; make all"
+```
 
 Download Binaries
 ===
