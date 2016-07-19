@@ -12,16 +12,16 @@ On Fedora/CentOS
     
 ```bash
     extract the tar.gz
-    mkdir -p /usr/lib64/erlang/lib/sd_notify-0.10/priv/
-    mkdir -p /usr/lib64/erlang/lib/sd_notify-0.10/ebin/
-    cp priv/* /usr/lib64/erlang/lib/sd_notify-0.10/priv/
-    cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.10/ebin/
+    mkdir -p /usr/lib64/erlang/lib/sd_notify-0.11/priv/
+    mkdir -p /usr/lib64/erlang/lib/sd_notify-0.11/ebin/
+    cp priv/* /usr/lib64/erlang/lib/sd_notify-0.11/priv/
+    cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.11/ebin/
 ```    
 
 On Debian/Ubuntu
 
 ```bash
-    dpkg -i erlang-sd-notify_0.10-1_amd64.deb
+    dpkg -i erlang-sd-notify_0.11-1_amd64.deb
 ```
     
 Build from source using Docker
@@ -30,22 +30,22 @@ Build from source using Docker
 On Ubuntu
 
 ```bash
-    docker build -t build_ubuntu docker/ubuntu_{version}/
+    docker build -t build_ubuntu_{version} docker/ubuntu_{version}/
     docker run -v {sd_notify_dir}:/home/sd/ build_ubuntu_{version} /bin/sh -c "cd /home/sd/; make deb"
 ```
 
 on Centos
 
 ```bash
-    docker build -t build_centos docker/centos_{version}/
-    docker run -v {sd_notify_dir}:/sd/ build_centos_{version} /bin/sh -c "cd /sd/; make all"
+    docker build -t build_centos_{version} docker/centos_{version}/
+    docker run -v {sd_notify_dir}:/home/sd/ build_centos_{version} /bin/sh -c "cd /home/sd/; make all"
 ```
 
 Example
 
 ```bash
     docker build -t build_centos docker/ubuntu_19/
-    docker run -v /home/gabriele/erlang-sd_notify:/home/sd/ build_ubunut_19 /bin/sh -c "cd /home/sd/; make all"
+    docker run -v /home/gabriele/erlang-sd_notify:/home/sd/ build_ubuntu_19 /bin/sh -c "cd /home/sd/; make all"
 ```
 
 Download Binaries
@@ -63,4 +63,3 @@ Quick example:
     1> sd_notify:sd_notify(0,"READY=1").
     0
 ```
-

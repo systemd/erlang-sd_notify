@@ -1,4 +1,4 @@
-VERSION=0.10
+VERSION=0.11
 
 # Directory names
 DEB_BUILD_DIR=deb-build
