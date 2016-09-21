@@ -51,8 +51,8 @@ init() ->
 		  end,
 	erlang:load_nif(filename:join(PrivDir, ?MODULE) ++ "_drv", 0).
 
-sd_notify(_, _) ->
-	?nif_stub.
+sd_notify(UnsetEnv, Data) ->
+	sd_pid_notify(0, UnsetEnv, Data).
 
 sd_pid_notify(_, _, _) ->
 	?nif_stub.
