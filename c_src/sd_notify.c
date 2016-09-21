@@ -53,7 +53,7 @@ static ERL_NIF_TERM sd_pid_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TE
 	enif_get_list_length(env, argv[2], &length);
 
 	char* state = (char*)enif_alloc(++length);
-	enif_get_string(env, argv[1], state, length, ERL_NIF_LATIN1);
+	enif_get_string(env, argv[2], state, length, ERL_NIF_LATIN1);
 	int result = sd_pid_notify(pid, unset_environment, state);
 	enif_free(state);
 
