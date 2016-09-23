@@ -24,38 +24,33 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "erl_nif.h"
 #include <systemd/sd-daemon.h>
 
-static ERL_NIF_TERM sd_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+static ERL_NIF_TERM sd_pid_notify_with_fds_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-	int unset_environment = 0;
-	enif_get_int(env, argv[0], &unset_environment);
-
+	ERL_NIF_TERM head, tail;
 	unsigned int length = 0;
-	enif_get_list_length(env, argv[1], &length);
 
-	char* state = (char*)enif_alloc(++length);
-	enif_get_string(env, argv[1], state, length, ERL_NIF_LATIN1);
-	int result = sd_notify(unset_environment, state);
-	enif_free(state);
-
-	return enif_make_int(env, result);
-}
-
-
-static ERL_NIF_TERM sd_pid_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-	int pid = 0;
+	pid_t pid = 0;
 	enif_get_int(env, argv[0], &pid);
 
 	int unset_environment = 0;
 	enif_get_int(env, argv[1], &unset_environment);
 
-	unsigned int length = 0;
 	enif_get_list_length(env, argv[2], &length);
-
-
 	char* state = (char*)enif_alloc(++length);
-	enif_get_string(env, argv[1], state, length, ERL_NIF_LATIN1);
-	int result = sd_pid_notify(pid, unset_environment, state);
+	enif_get_string(env, argv[2], state, length, ERL_NIF_LATIN1);
+
+	enif_get_list_length(env, argv[3], &length);
+	int* fds = (int*)enif_alloc(++length * sizeof(int));
+	ERL_NIF_TERM list = argv[3];
+	int i = 0;
+	while(enif_get_list_cell(env, list, &head, &tail)) {
+		enif_get_int(env, head, &fds[i]);
+		i++;
+		list = tail;
+	}
+	int result = sd_pid_notify_with_fds(pid, unset_environment, state, fds, length);
+
+	enif_free(fds);
 	enif_free(state);
 
 	return enif_make_int(env, result);
@@ -64,8 +59,7 @@ static ERL_NIF_TERM sd_pid_notify_nif(ErlNifEnv* env, int argc, const ERL_NIF_TE
 
 static ErlNifFunc nif_funcs[] =
 {
-	{"sd_notify", 2, sd_notify_nif},
-	{"sd_pid_notify", 3, sd_pid_notify_nif},
+	{"sd_pid_notify_with_fds", 4, sd_pid_notify_with_fds_nif},
 
 };
 

@@ -27,7 +27,7 @@
 
 -module(sd_notify).
 
--export([sd_notify/2, sd_notifyf/3, sd_pid_notify/3, sd_pid_notifyf/4]).
+-export([sd_notify/2, sd_notifyf/3, sd_pid_notify/3, sd_pid_notifyf/4, sd_pid_notify_with_fds/4]).
 
 -on_load(init/0).
 
@@ -51,18 +51,20 @@ init() ->
 		  end,
 	erlang:load_nif(filename:join(PrivDir, ?MODULE) ++ "_drv", 0).
 
-sd_notify(_, _) ->
-	?nif_stub.
+sd_notify(UnsetEnv, Data) ->
+	sd_pid_notify_with_fds(0, UnsetEnv, Data, []).
 
-sd_pid_notify(_, _, _) ->
-	?nif_stub.
+sd_pid_notify(Pid, UnsetEnv, Data) ->
+	sd_pid_notify_with_fds(Pid, UnsetEnv, Data, []).
 
 sd_notifyf(UnsetEnv, Format, Data) ->
-	sd_notify(UnsetEnv, lists:flatten(io_lib:format(Format, Data))).
-
+	sd_pid_notify_with_fds(0, UnsetEnv, lists:flatten(io_lib:format(Format, Data)), []).
 
 sd_pid_notifyf(Pid, UnsetEnv, Format, Data) ->
-	sd_pid_notify(Pid, UnsetEnv, lists:flatten(io_lib:format(Format, Data))).
+	sd_pid_notify_with_fds(Pid, UnsetEnv, lists:flatten(io_lib:format(Format, Data)), []).
+
+sd_pid_notify_with_fds(_, _, _, _) ->
+	?nif_stub.
 
 %% ===================================================================
 %% EUnit tests
