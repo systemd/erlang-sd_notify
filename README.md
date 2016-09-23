@@ -44,7 +44,7 @@ on Centos
 Example
 
 ```bash
-    docker build -t build_centos docker/ubuntu_19/
+    docker build -t build_ubuntu_19 docker/ubuntu_19/
     docker run -v /home/gabriele/erlang-sd_notify:/home/sd/ build_ubuntu_19 /bin/sh -c "cd /home/sd/; make all"
 ```
 
