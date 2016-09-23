@@ -9,14 +9,13 @@ otp_release:
 before_install:
  - sudo apt-get install -y gcc 
  - sudo apt-get install -y make
- - sudo apt-get install -y git 
  - sudo apt-get install -y wget
- - apt-get install -y  build-essential
- - apt-get install -y  devscripts 
- - apt-get install -y  fakeroot 
- - apt-get install -y debhelper
- - apt-get install -y  libsystemd-dev
- - apt-get install -y  rebar
+ - sudo apt-get install -y build-essential
+ - sudo apt-get install -y devscripts 
+ - sudo apt-get install -y fakeroot 
+ - sudo apt-get install -y debhelper
+ - sudo apt-get install -y libsystemd-dev
+ - sudo apt-get install -y rebar
 
 script:
  - make all
