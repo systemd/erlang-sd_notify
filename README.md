@@ -12,29 +12,29 @@ On Fedora/CentOS
     
 ```bash
     extract the tar.gz
-    mkdir -p /usr/lib64/erlang/lib/sd_notify-0.11/priv/
-    mkdir -p /usr/lib64/erlang/lib/sd_notify-0.11/ebin/
-    cp priv/* /usr/lib64/erlang/lib/sd_notify-0.11/priv/
-    cp ebin/* /usr/lib64/erlang/lib/sd_notify-0.11/ebin/
+    mkdir -p /usr/lib64/erlang/lib/sd_notify-{version}/priv/
+    mkdir -p /usr/lib64/erlang/lib/sd_notify-{version}/ebin/
+    cp priv/* /usr/lib64/erlang/lib/sd_notify-{version}/priv/
+    cp ebin/* /usr/lib64/erlang/lib/sd_notify-{version}/ebin/
 ```    
 
 On Debian/Ubuntu
 
 ```bash
-    dpkg -i erlang-sd-notify_0.11-1_amd64.deb
+    dpkg -i erlang-sd-notify_{version}-1_amd64.deb
 ```
     
 Build from source using Docker
 ===
 
-On Ubuntu
+Ubuntu
 
 ```bash
     docker build -t build_ubuntu_{version} docker/ubuntu_{version}/
     docker run -v {sd_notify_dir}:/home/sd/ build_ubuntu_{version} /bin/sh -c "cd /home/sd/; make deb"
 ```
 
-on Centos
+Centos
 
 ```bash
     docker build -t build_centos_{version} docker/centos_{version}/
