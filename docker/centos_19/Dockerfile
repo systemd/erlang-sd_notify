@@ -8,15 +8,21 @@ RUN  yum install -y  \
   make \
   git  \
   wget \
-  which
+  which \
+  epel-release \
+  nano
 
 
 
 
-RUN wget https://github.com/rabbitmq/erlang-rpm/releases/download/v1.4.5/erlang-19.1.0-1.el7.centos.x86_64.rpm
+RUN wget https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
 
-RUN rpm -i erlang-19.1.0-1.el7.centos.x86_64.rpm
+RUN rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
 
-RUN wget https://github.com/rebar/rebar/wiki/rebar && chmod +x rebar
+RUN  yum update -y 
 
-
+RUN  yum install -y  \
+     erlang-19.1-1.el7.centos.x86_64 \
+	 rebar \
+  	 erlang-rebar \
+  	 rpm-build
