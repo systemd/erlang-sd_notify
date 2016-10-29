@@ -46,7 +46,25 @@ install -m 755 -p priv/%{realname}_drv.so $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%
 
 
 %changelog
-* Sat Oct 29 2016 Igor Gnatenko <g.santomaggio@gmail.com> - 0.12
-- nitial build for 0.12
+* Sat Oct 29 2016 Gabriele Santomaggio <g.santomaggio@gmail.com> - 0.12
+- build for 0.12
+
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+* Tue Nov 04 2014 Peter Lemenkov <lemenkov@gmail.com> - 0.1-5
+- Rebuild with Erlang 17.3.3
+
+* Thu Oct  2 2014 John Eckersberg <eck@redhat.com> - 0.1-4
+- Explicitly link shared library with libsystemd (#1148604)
+
+* Thu Aug 28 2014 Peter Lemenkov <lemenkov@gmail.com> - 0.1-3
+- Rebuild with Erlang 17.2.1
+
+* Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org>
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
+* Tue Jun 03 2014 Peter Lemenkov <lemenkov@gmail.com> - 0.1-1
+- initial build
 
 
