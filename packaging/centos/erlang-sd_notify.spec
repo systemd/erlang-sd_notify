@@ -21,7 +21,7 @@ BuildRequires:	systemd-devel
 %description
 %{summary}.
 
-%prep -c .
+%prep 
 %setup  -c .
 
 %build
