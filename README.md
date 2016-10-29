@@ -11,11 +11,7 @@ Installation
 On Fedora/CentOS
     
 ```bash
-    extract the tar.gz
-    mkdir -p /usr/lib64/erlang/lib/sd_notify-{version}/priv/
-    mkdir -p /usr/lib64/erlang/lib/sd_notify-{version}/ebin/
-    cp priv/* /usr/lib64/erlang/lib/sd_notify-{version}/priv/
-    cp ebin/* /usr/lib64/erlang/lib/sd_notify-{version}/ebin/
+    rpm -i erlang-sd_notify-{version}-1.el7.centos.x86_64.rpm
 ```    
 
 On Debian/Ubuntu
@@ -38,7 +34,7 @@ Centos
 
 ```bash
     docker build -t build_centos_{version} docker/centos_{version}/
-    docker run -v {sd_notify_dir}:/home/sd/ build_centos_{version} /bin/sh -c "cd /home/sd/; make all"
+    docker run -v {sd_notify_dir}:/home/sd/ build_centos_{version} /bin/sh -c "cd /home/sd/; make rpm"
 ```
 
 Example
