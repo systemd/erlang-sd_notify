@@ -1,6 +1,6 @@
-erlang-sd-notify (0.12-1) UNRELEASED; urgency=medium
+erlang-sd-notify (0.13-1) UNRELEASED; urgency=medium
 
-  * Update for 19.1
+  * Update for 19.1.5
 
- -- Gabriele Santomaggio <g.santomaggio@gmail.com>  Fri, 23 Sep 2016 22:54:18 +0000
+ -- Gabriele Santomaggio <g.santomaggio@gmail.com>  Sat, 5 Nov 2016 11:54:18 +0000
 

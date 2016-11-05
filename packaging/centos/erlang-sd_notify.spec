@@ -1,6 +1,6 @@
 %global realname sd_notify
 %global upstream systemd
-%global upstream_version 0.12
+%global upstream_version 0.13
 
 
 
@@ -46,8 +46,8 @@ install -m 755 -p priv/%{realname}_drv.so $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%
 
 
 %changelog
-* Sat Oct 29 2016 Gabriele Santomaggio <g.santomaggio@gmail.com> - 0.12
-- build for 0.12
+* Sat Nov 5 2016 Gabriele Santomaggio <g.santomaggio@gmail.com> - 0.13
+- build for 0.13
 
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
