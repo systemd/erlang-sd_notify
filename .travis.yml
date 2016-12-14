@@ -3,7 +3,13 @@ sudo: required
 language: erlang
 
 otp_release:
-  - 18.2.1
+- 18.0
+- 18.1
+- 18.2
+- 18.2.1
+- 18.3
+- 19.0
+- 19.1
 
 services:
 - docker
