@@ -61,7 +61,6 @@ static ERL_NIF_TERM sd_pid_notify_with_fds_nif(ErlNifEnv* env, int argc, const E
 	return enif_make_int(env, result);
 }
 
-
 static ErlNifFunc nif_funcs[] =
 {
 	{"sd_pid_notify_with_fds", 4, sd_pid_notify_with_fds_nif},
