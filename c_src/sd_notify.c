@@ -45,7 +45,7 @@ static ERL_NIF_TERM sd_pid_notify_with_fds_nif(ErlNifEnv* env, int argc, const E
 	enif_get_string(env, argv[2], state, length, ERL_NIF_LATIN1);
 
 	enif_get_list_length(env, argv[3], &length);
-	int* fds = (int*)enif_alloc(++length * sizeof(int));
+	int* fds = (int*)enif_alloc(length * sizeof(int));
 	ERL_NIF_TERM list = argv[3];
 	int i = 0;
 	while(enif_get_list_cell(env, list, &head, &tail)) {
