@@ -36,10 +36,6 @@
 nif_stub_error(Line) ->
 	erlang:nif_error({nif_not_loaded,module,?MODULE,line,Line}).
 
--ifdef(TEST).
--include_lib("eunit/include/eunit.hrl").
--endif.
-
 init() ->
 	PrivDir = case code:priv_dir(?MODULE) of
 			  {error, bad_name} ->
@@ -65,16 +61,3 @@ sd_pid_notifyf(Pid, UnsetEnv, Format, Data) ->
 
 sd_pid_notify_with_fds(_, _, _, _) ->
 	?nif_stub.
-
-%% ===================================================================
-%% EUnit tests
-%% ===================================================================
--ifdef(TEST).
-
-sd_notify_test() ->
-	?assertEqual(ok, ok). 
-
-sd_notifyf_test() ->
-	?assertEqual(ok, ok).
-
--endif.
