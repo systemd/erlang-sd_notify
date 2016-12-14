@@ -7,6 +7,7 @@ all: compile
 compile:
 	$(REBAR) compile $(REBAR_FLAGS)
 
+check: test
 test: compile
 	$(REBAR) eunit $(REBAR_FLAGS)
 
