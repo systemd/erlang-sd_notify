@@ -2,7 +2,11 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
+
 sd_notify_test_() ->
+	sd_notify_test_local(erlang:system_info(otp_release)).
+
+sd_notify_test_local("19") ->
 	{ok, CWD} = file:get_cwd(),
 	FakeNotifyUnixSockName = CWD ++ "/fake-notify-udp-sock-" ++ integer_to_list(erlang:phash2(make_ref())),
 	TestMessage = integer_to_list(erlang:phash2(make_ref())),
@@ -24,4 +28,6 @@ sd_notify_test_() ->
 
 		]
 
-	}.
+	};
+sd_notify_test_local(_) ->
+	[].
