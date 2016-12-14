@@ -24,6 +24,11 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "erl_nif.h"
 #include <systemd/sd-daemon.h>
 
+static int upgrade(ErlNifEnv* env, void** priv, void** old_priv, ERL_NIF_TERM load_info)
+{
+	return 0;
+}
+
 static ERL_NIF_TERM sd_pid_notify_with_fds_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
 	ERL_NIF_TERM head, tail;
@@ -63,4 +68,9 @@ static ErlNifFunc nif_funcs[] =
 
 };
 
-ERL_NIF_INIT(sd_notify, nif_funcs, NULL, NULL, NULL, NULL);
+// Initialize this NIF library.
+//
+// Args: (MODULE, ErlNifFunc funcs[], load, reload, upgrade, unload)
+// Docs: http://erlang.org/doc/man/erl_nif.html#ERL_NIF_INIT
+
+ERL_NIF_INIT(sd_notify, nif_funcs, NULL, NULL, &upgrade, NULL);
