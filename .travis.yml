@@ -9,6 +9,7 @@ services:
 - docker
 
 before_install:
+- kerl list installations
 - docker build -t build_ubuntu https://raw.githubusercontent.com/systemd/erlang-sd_notify/master/docker/ubuntu_18_3/Dockerfile
 - docker images
 
