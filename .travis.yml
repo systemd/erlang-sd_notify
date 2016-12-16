@@ -10,7 +10,7 @@ services:
 
 before_install:
 - kerl list installations
-- docker build -t build_ubuntu docker/ubuntu_19/
+- docker build -t build_ubuntu docker/ubuntu_18_3/
 - docker images
 
 script:
