@@ -10,8 +10,12 @@ services:
 
 before_install:
 - kerl list installations
-- docker build -t build_ubuntu docker/ubuntu_18_3/
+- docker build -t build_ubuntu_18_3 docker/ubuntu_18_3/
 - docker images
+- docker build -t build_centos_18_3 docker/centos_18_3/
+- docker build -t build_centos_19 docker/centos_19/
 
 script:
-- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu /bin/sh -c "cd /home/sd/; make all; make test"
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu_18_3 /bin/sh -c "cd /home/sd/; make all; make test"
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_18_3 /bin/sh -c "cd /home/sd/; make all; make test"
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_19 /bin/sh -c "cd /home/sd/; make all; make test"
