@@ -1,15 +1,17 @@
 sudo: required
-dist: trusty
+
 language: erlang
 
 otp_release:
-- 19.1
+- 18.0
 
+services:
+- docker
 
 before_install:
-- sudo apt-get -y update 
-- sudo apt-get upgrade -y
+- kerl list installations
+- docker build -t build_ubuntu ubuntu_18_3/Dockerfile
+- docker images
 
 script:
-- make all 
-- make test
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu /bin/sh -c "cd /home/sd/; make all; make test"
