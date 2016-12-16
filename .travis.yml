@@ -7,9 +7,9 @@ otp_release:
 
 
 before_install:
-- add-apt-repository ppa:pitti/systemd -y
-- apt-get -qq update
-- apt-get install systemd libpam-systemd systemd-ui -y 
+- sudo add-apt-repository ppa:pitti/systemd -y
+- sudo apt-get -qq update
+- sudo apt-get install systemd libpam-systemd systemd-ui -y 
 
 script:
 - make all 
