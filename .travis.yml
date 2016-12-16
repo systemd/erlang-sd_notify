@@ -7,10 +7,9 @@ otp_release:
 
 
 before_install:
-- sudo add-apt-repository ppa:pitti/systemd -y
-- sudo apt-get -qq update
-- sudo apt-get install linux-image-2.6.35-23-generic=2.6.35-23.41ppa1 linux-headers-2.6.35-23-generic=2.6.35-23.41ppa1 linux-headers-2.6.35-23=2.6.35-23.41ppa1 -y
-- sudo apt-get install systemd libpam-systemd systemd-gui systemd-extra-units
+- sudo apt-get -y update 
+- sudo apt-get upgrate -y
+
 script:
 - make all 
 - make test
