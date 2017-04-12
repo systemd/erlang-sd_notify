@@ -1,23 +1,14 @@
 sudo: required
 
-language: erlang
-
-otp_release:
-- 18.0
-- 18.1
-- 18.2
-- 18.2.1
-- 18.3
-- 19.0
-- 19.1
-
 services:
 - docker
 
 before_install:
-- kerl list installations
-- docker build -t build_ubuntu https://raw.githubusercontent.com/systemd/erlang-sd_notify/master/docker/ubuntu_18_3/Dockerfile
-- docker images
+- docker build -t build_ubuntu_18_3 docker/ubuntu_18_3/
+- docker build -t build_centos_18_3 docker/centos_18_3/
+- docker build -t build_centos_19 docker/centos_19/
 
 script:
-- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu /bin/sh -c "cd /home/sd/; make all; make test"
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu_18_3 /bin/sh -c "cd /home/sd/; make all; make test"
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_18_3 /bin/sh -c "cd /home/sd/; make all; make test"
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_19 /bin/sh -c "cd /home/sd/; make all; make test"
