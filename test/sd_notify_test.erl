@@ -20,7 +20,7 @@ sd_notify_test_local("19") ->
 				"Try sending message",
 				fun() ->
 					TestMessage = integer_to_list(erlang:phash2(make_ref())),
-					sd_notify:sd_pid_notify_with_fds(0, 0, TestMessage, [1, 2, 3]),
+					1 = sd_notify:sd_pid_notify_with_fds(0, 0, TestMessage, []),
 					{ok, {_Address, _Port, Packet}} = gen_udp:recv(FakeNotifyUnixSock, length(TestMessage), 1000),
 					?assertEqual(TestMessage, Packet)
 				end
