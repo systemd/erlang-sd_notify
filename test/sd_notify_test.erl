@@ -8,7 +8,7 @@ sd_notify_test_() ->
 
 sd_notify_test_local("19") ->
 	{ok, CWD} = file:get_cwd(),
-	FakeNotifyUnixSockName = CWD ++ "/fake-notify-udp-sock-" ++ integer_to_list(erlang:phash2(make_ref())),
+	FakeNotifyUnixSockName = CWD ++ "/fake-sock-" ++ integer_to_list(erlang:phash2(make_ref())),
 	{ok, FakeNotifyUnixSock} = gen_udp:open(0, [{ifaddr, {local, FakeNotifyUnixSockName}}, {active, false}, list]),
 	os:putenv("NOTIFY_SOCKET", FakeNotifyUnixSockName),
 
