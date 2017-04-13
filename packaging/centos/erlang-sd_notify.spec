@@ -1,6 +1,6 @@
 %global realname sd_notify
 %global upstream systemd
-%global upstream_version 0.14
+%global upstream_version 1.0
 
 
 
@@ -46,6 +46,9 @@ install -m 755 -p priv/%{realname}_drv.so $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%
 
 
 %changelog
+* Thu Apr 13 2017 Gabriele Santomaggio <g.santomaggio@gmail.com> - 1.0
+- build for 1.0
+
 * Wed Dec 14 2016 Gabriele Santomaggio <g.santomaggio@gmail.com> - 0.14
 - build for 0.14
 
