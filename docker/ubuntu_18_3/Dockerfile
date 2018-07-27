@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:16.04
 
 RUN apt-get -y update 
 
@@ -7,7 +7,7 @@ RUN  apt-get install -y  \
   make \
   git  \
   wget \
-  erlang=1:18.3-dfsg-1ubuntu3 \
+  erlang=1:18.3-dfsg-1ubuntu3.1 \
   build-essential \
 	devscripts \
 	fakeroot \
