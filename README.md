@@ -19,6 +19,18 @@ On Debian/Ubuntu
 ```bash
     dpkg -i erlang-sd-notify_{version}-1_amd64.deb
 ```
+
+On openSUSE/SLES distributions
+
+you can install the package using the openSUSE [repositories](https://build.opensuse.org/repositories/network:messaging:amqp/erlang-sd_notify)
+
+for example for Leap15:
+```bash
+sudo zypper addrepo -f https://download.opensuse.org/repositories/network:/messaging:/amqp/openSUSE_Leap_15/network:messaging:amqp.repo
+sudo zypper --gpg-auto-import-keys refresh
+sudo zypper install erlang-sd_notify
+```
+
     
 Build from source using Docker
 ===
