@@ -15,22 +15,22 @@ RUN yum install -y  \
 
 
 
-#RUN wget https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+RUN wget https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
 
-#RUN rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
-
-RUN echo $'[rabbitmq-erlang] \n\
-name=rabbitmq-erlang \n\
-baseurl=https://dl.bintray.com/rabbitmq/rpm/erlang/21/el/7 \n\
-gpgcheck=1 \n\
-gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc \n\
-repo_gpgcheck=0 \n\
-enabled=1 \n\
-' > /etc/yum.repos.d/rabbitmq-erlang.repo
-
+RUN rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
 
 RUN yum update -y
 
+RUN yum install -y erlang-erts-21.0-1.el7.centos \
+  erlang-inets-21.0-1.el7.centos \
+  erlang-kernel-21.0-1.el7.centos \
+  erlang-mnesia-21.0-1.el7.centos \
+  erlang-ssl-21.0-1.el7.centos \
+  erlang-stdlib-21.0-1.el7.centos
+
+
+
 RUN yum install -y  \
-  erlang-21.0.4-1.el7.centos.x86_64 \
+  erlang-21.0-1.el7.centos \
   rpm-build
+
