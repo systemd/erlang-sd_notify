@@ -15,22 +15,8 @@ RUN yum install -y  \
 
 
 
-RUN wget https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+RUN wget https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7/x86_64/erlang-21.1.2-1.el7.centos.x86_64.rpm
 
-RUN rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+RUN rpm -i erlang-21.1.2-1.el7.centos.x86_64.rpm
 
-RUN yum update -y
-
-RUN yum install -y erlang-erts-21.0-1.el7.centos \
-  erlang-inets-21.0-1.el7.centos \
-  erlang-kernel-21.0-1.el7.centos \
-  erlang-mnesia-21.0-1.el7.centos \
-  erlang-ssl-21.0-1.el7.centos \
-  erlang-stdlib-21.0-1.el7.centos
-
-
-
-RUN yum install -y  \
-  erlang-21.0-1.el7.centos \
-  rpm-build
-
+RUN wget https://github.com/rebar/rebar/wiki/rebar && chmod +x rebar

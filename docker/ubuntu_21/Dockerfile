@@ -17,7 +17,9 @@ RUN  apt-get install -y  \
 RUN wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
 RUN dpkg -i erlang-solutions_1.0_all.deb
 RUN apt-get update -y
-RUN apt-get install -y erlang-base=1:21.0-1 \
+RUN apt-get install -y 
+    erlang=1:21.0-1 \
+    erlang-base=1:21.0-1 \
     erlang-syntax-tools=1:21.0-1 \
     erlang-examples=1:21.0-1 \
     erlang-src=1:21.0-1 \
