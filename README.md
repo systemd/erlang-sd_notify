@@ -5,6 +5,7 @@ Erlang module for native access to the `systemd-notify` facilities.
 
 Build status: [![Build Status](https://travis-ci.org/systemd/erlang-sd_notify.svg?branch=master)](https://travis-ci.org/systemd/erlang-sd_notify)
 
+
 Installation
 ============
 
@@ -24,7 +25,7 @@ On openSUSE/SLES distributions
 
 You can install the package using the openSUSE [repositories](https://build.opensuse.org/repositories/network:messaging:amqp/erlang-sd_notify)
 
-for example for Leap15:
+For example for Leap15:
 ```bash
 sudo zypper addrepo -f https://download.opensuse.org/repositories/network:/messaging:/amqp/openSUSE_Leap_15/network:messaging:amqp.repo
 sudo zypper --gpg-auto-import-keys refresh
