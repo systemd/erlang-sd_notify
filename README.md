@@ -22,7 +22,7 @@ On Debian/Ubuntu
 
 On openSUSE/SLES distributions
 
-you can install the package using the openSUSE [repositories](https://build.opensuse.org/repositories/network:messaging:amqp/erlang-sd_notify)
+You can install the package using the openSUSE [repositories](https://build.opensuse.org/repositories/network:messaging:amqp/erlang-sd_notify)
 
 for example for Leap15:
 ```bash
