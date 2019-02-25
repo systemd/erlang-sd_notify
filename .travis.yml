@@ -4,21 +4,9 @@ services:
 - docker
 
 before_install:
-- docker build -t build_ubuntu_18_3 docker/ubuntu_18_3/
 - docker build -t build_ubuntu_19.3 docker/ubuntu_19.3/
-- docker build -t build_ubuntu_20.3 docker/ubuntu_20.3/
-- docker build -t build_ubuntu_21 docker/ubuntu_21/
-- docker build -t build_centos_18_3 docker/centos_18_3/
 - docker build -t build_centos_19.3 docker/centos_19.3/
-- docker build -t build_centos_20.3 docker/centos_20.3/
-- docker build -t build_centos_21 docker/centos_21/
 
 script:
-- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu_18_3 /bin/sh -c "cd /home/sd/; make all; make test"
 - docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu_19.3 /bin/sh -c "cd /home/sd/; make all; make test"
-- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu_20.3 /bin/sh -c "cd /home/sd/; make all; make test"
-- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu_21 /bin/sh -c "cd /home/sd/; make all; make test"
-- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_18_3 /bin/sh -c "cd /home/sd/; make all; make test"
 - docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_19.3 /bin/sh -c "cd /home/sd/; make all; make test"
-- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_20.3 /bin/sh -c "cd /home/sd/; make all; make test"
-- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_21 /bin/sh -c "cd /home/sd/; make all; make test"
