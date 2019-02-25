@@ -3,7 +3,7 @@ Erlang systemd-notify
 ===============
 Erlang module for native access to the `systemd-notify` facilities. 
 
-Build status: [![Build Status](https://travis-ci.org/systemd/erlang-sd_notify.svg?branch=master)](https://travis-ci.org/systemd/erlang-sd_notify)
+Build status: [![Build Status](https://travis-ci.org/systemd/erlang-sd_notify.svg?branch=v18)](https://travis-ci.org/systemd/erlang-sd_notify)
 
 Installation
 ============
