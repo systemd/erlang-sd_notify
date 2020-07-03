@@ -4,6 +4,7 @@ services:
 - docker
 
 before_install:
+- docker build -t build_centos_23 docker/centos_23/
 - docker build -t build_centos_22 docker/centos_22/
 - docker build -t build_ubuntu_21 docker/ubuntu_21/
 - docker build -t build_centos_21 docker/centos_21/
@@ -11,6 +12,7 @@ before_install:
 - docker build -t build_centos_20 docker/centos_20/
 
 script:
+- docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_23 /bin/sh -c "cd /home/sd/; make clean; make all; make test"
 - docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_22 /bin/sh -c "cd /home/sd/; make clean; make all; make test"
 - docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_ubuntu_21 /bin/sh -c "cd /home/sd/; make clean; make all; make test"
 - docker run -v $TRAVIS_BUILD_DIR:/home/sd/ build_centos_21 /bin/sh -c "cd /home/sd/; make clean; make all; make test"
