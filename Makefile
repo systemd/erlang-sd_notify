@@ -20,5 +20,5 @@ dialyzer:
 deb:
 	cd packaging/deb && $(MAKE) TOPDIR=$(PWD) deb
 
-rpm: 
+rpm:
 	cd packaging/centos && $(MAKE) TOPDIR=$(PWD) rpm
