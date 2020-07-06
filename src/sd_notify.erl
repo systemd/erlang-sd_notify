@@ -41,7 +41,7 @@ sd_notifyf(UnsetEnv, Format, Data) ->
 sd_pid_notifyf(Pid, UnsetEnv, Format, Data) ->
 	sd_pid_notify_with_fds(Pid, UnsetEnv, lists:flatten(io_lib:format(Format, Data)), []).
 
-sd_pid_notify_with_fds(_Pid, _UnsetEnv, Call, _Fds) ->
+sd_pid_notify_with_fds(_Pid, UnsetEnv, Call, _Fds) ->
 	error_logger:info_msg("systemd: ~p", [Call]),
 	case os:getenv("NOTIFY_SOCKET") of
 		false -> {error, not_configured};
@@ -52,6 +52,9 @@ sd_pid_notify_with_fds(_Pid, _UnsetEnv, Call, _Fds) ->
 				{ok, Socket} ->
 					Result = gen_udp:send(Socket, {local,Path}, 0, Call),
 					gen_udp:close(Socket),
+
+					UnsetEnv == true andalso os:unsetenv("NOTIFY_SOCKET"),
+
 					Result
 			end
 	end.
