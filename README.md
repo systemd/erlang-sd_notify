@@ -10,10 +10,10 @@ Installation
 ============
 
 On Fedora/CentOS
-    
+
 ```bash
     rpm -i erlang-sd_notify-{version}-1.el7.centos.x86_64.rpm
-```    
+```
 
 On Debian/Ubuntu
 
@@ -32,7 +32,7 @@ sudo zypper --gpg-auto-import-keys refresh
 sudo zypper install erlang-sd_notify
 ```
 
-    
+
 Build from source using Docker
 ===
 
@@ -59,7 +59,7 @@ Example
 
 Download Binaries
 ===
-[Github Repository](https://github.com/systemd/erlang-sd_notify/releases) 
+[Github Repository](https://github.com/systemd/erlang-sd_notify/releases)
 
 Usage
 =====
@@ -68,7 +68,7 @@ Quick example:
 
 ```bash
     [root@a499ee66251a]# erl
-    ...    
+    ...
     1> sd_notify:sd_notify(0,"READY=1").
     0
 ```
