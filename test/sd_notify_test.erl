@@ -4,9 +4,6 @@
 
 
 sd_notify_test_() ->
-	sd_notify_test_local(erlang:system_info(otp_release)).
-
-sd_notify_test_local("19") ->
 	{ok, CWD} = file:get_cwd(),
 	FakeNotifyUnixSockName = CWD ++ "/fake-sock-" ++ integer_to_list(erlang:phash2(make_ref())),
 	{ok, FakeNotifyUnixSock} = gen_udp:open(0, [{ifaddr, {local, FakeNotifyUnixSockName}}, {active, false}, list]),
@@ -28,6 +25,4 @@ sd_notify_test_local("19") ->
 
 		]
 
-	};
-sd_notify_test_local(_) ->
-	[].
+	}.
