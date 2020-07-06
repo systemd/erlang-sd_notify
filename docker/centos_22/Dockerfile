@@ -3,8 +3,6 @@ FROM centos
 RUN yum -y update
 
 RUN yum install -y  \
-  gcc \
-  systemd-devel  \
   make \
   git  \
   wget \

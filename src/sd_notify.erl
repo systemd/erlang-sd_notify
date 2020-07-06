@@ -29,24 +29,6 @@
 
 -export([sd_notify/2, sd_notifyf/3, sd_pid_notify/3, sd_pid_notifyf/4, sd_pid_notify_with_fds/4]).
 
--on_load(init/0).
-
--define(nif_stub, nif_stub_error(?LINE)).
-
-nif_stub_error(Line) ->
-	erlang:nif_error({nif_not_loaded,module,?MODULE,line,Line}).
-
-init() ->
-	PrivDir = case code:priv_dir(?MODULE) of
-			  {error, bad_name} ->
-				  EbinDir = filename:dirname(code:which(?MODULE)),
-				  AppPath = filename:dirname(EbinDir),
-				  filename:join(AppPath, "priv");
-			  Path ->
-				  Path
-		  end,
-	erlang:load_nif(filename:join(PrivDir, ?MODULE) ++ "_drv", 0).
-
 sd_notify(UnsetEnv, Data) ->
 	sd_pid_notify_with_fds(0, UnsetEnv, Data, []).
 
@@ -59,5 +41,17 @@ sd_notifyf(UnsetEnv, Format, Data) ->
 sd_pid_notifyf(Pid, UnsetEnv, Format, Data) ->
 	sd_pid_notify_with_fds(Pid, UnsetEnv, lists:flatten(io_lib:format(Format, Data)), []).
 
-sd_pid_notify_with_fds(_, _, _, _) ->
-	?nif_stub.
+sd_pid_notify_with_fds(_Pid, _UnsetEnv, Call, _Fds) ->
+	error_logger:info_msg("systemd: ~p", [Call]),
+	case os:getenv("NOTIFY_SOCKET") of
+		false -> {error, not_configured};
+		Path ->
+			case gen_udp:open(0, [local]) of
+				{error, SocketError} ->
+					{error, SocketError};
+				{ok, Socket} ->
+					Result = gen_udp:send(Socket, {local,Path}, 0, Call),
+					gen_udp:close(Socket),
+					Result
+			end
+	end.
