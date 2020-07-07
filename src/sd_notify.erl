@@ -29,6 +29,44 @@
 
 -export([sd_notify/2, sd_notifyf/3, sd_pid_notify/3, sd_pid_notifyf/4, sd_pid_notify_with_fds/4]).
 
+-export([ready/0, reloading/0, stopping/0, watchdog/0]).
+-export([start_link/0]).
+-export([init/1, handle_info/2, terminate/2]).
+
+% API helpers
+
+ready() -> sd_pid_notify_with_fds(0, false, <<"READY=1">>, []).
+reloading() -> sd_pid_notify_with_fds(0, false, <<"RELOADING=1">>, []).
+stopping() -> sd_pid_notify_with_fds(0, false, <<"STOPPING=1">>, []).
+watchdog() -> sd_pid_notify_with_fds(0, false, <<"WATCHDOG=1">>, []).
+
+% gen_server API and callbacks
+
+start_link() ->
+	gen_server:start_link({local,?MODULE}, ?MODULE, [], []).
+
+init([]) ->
+	WatchdogMs = case os:getenv( "WATCHDOG_USEC" ) of
+		false -> none;
+		Value ->
+			Part = erlang:round(0.8 * erlang:list_to_integer(Value)),
+			erlang:convert_time_unit(Part, microsecond, millisecond)
+	end,
+	erlang:send_after(WatchdogMs, self(), watchdog),
+	error_logger:info_msg("watchdog: ~p ms", [WatchdogMs]),
+	{ok, WatchdogMs}.
+
+handle_info(watchdog, none) ->
+	{noreply, none};
+handle_info(watchdog, WatchdogMs) ->
+	watchdog(),
+	erlang:send_after(WatchdogMs, self(), watchdog),
+	{noreply, WatchdogMs}.
+
+terminate(_,_) -> ok.
+
+% Systemd API
+
 sd_notify(UnsetEnv, Data) ->
 	sd_pid_notify_with_fds(0, UnsetEnv, Data, []).
 
