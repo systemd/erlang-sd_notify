@@ -1,6 +1,6 @@
 {application, sd_notify,
  [
-  {description, "Erlang sd_notify NIF"},
+  {description, "Erlang sd_notify API"},
   {vsn, "git"},
   {registered, []},
   {applications, [

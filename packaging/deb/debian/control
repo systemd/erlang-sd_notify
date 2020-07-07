@@ -5,12 +5,10 @@ Priority: optional
 Standards-Version: 3.9.2
 Build-Depends: debhelper (>= 9),
   erlang-dev (>=17.3-dfsg-4),
-  libsystemd-dev (>=215),
   rebar,
 
 Package: erlang-sd-notify
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
-  erlang-base (>=17.3) | erlang-base-hipe (>=17.3),
-  libsystemd0 (>=215),
+  erlang-base (>=17.3) | erlang-base-hipe (>=17.3)
 Description: Systemd notification support for Erlang.

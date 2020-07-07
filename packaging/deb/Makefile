@@ -30,4 +30,3 @@ deb-install:
 	pwd
 	install -o root -g root -t $(TARGET_DIR)/ebin ../../ebin/*.app
 	install -o root -g root -t $(TARGET_DIR)/ebin ../../ebin/*.beam
-	install -o root -g root -t $(TARGET_DIR)/priv ../../priv/*.so
