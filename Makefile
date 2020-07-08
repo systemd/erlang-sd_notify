@@ -1,5 +1,4 @@
 REBAR3 ?= $(shell which rebar3 2>/dev/null || which ./rebar3)
-OUT_DIR = _build/default/lib/sd_notify/ebin
 
 REBAR_FLAGS ?=
 
@@ -10,6 +9,7 @@ compile:
 	
 check: test
 test: clean compile
+	rm -rf _build
 	$(REBAR3) eunit $(REBAR_FLAGS)
 
 clean:
