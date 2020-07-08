@@ -1,6 +1,6 @@
 %global realname sd_notify
 %global upstream systemd
-%global upstream_version 1.0
+%global upstream_version 1.1
 %global debug_package %{nil}
 %global output_dir _build/default/lib/sd_notify/ebin
 

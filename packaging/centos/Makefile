@@ -2,7 +2,7 @@ FINAL_OUTPUT_DIR=FINAL_RPMS
 
 
 
-VERSION=1.0
+VERSION=1.1
 
 # Directory names
 RPM_BUILD_DIR=rpm-build
