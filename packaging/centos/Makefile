@@ -22,7 +22,7 @@ rpm:	clean erlang-sd_notify
 
 prepare:
 	mkdir -p BUILD SOURCES SPECS SRPMS RPMS tmp dist $(TARBALL_DIR)
-	tar czf $(TARBALL_DIR)/$(SOURCE_TGZ)  -C $(TOPDIR)  src/ c_src/ rebar.config LICENSE
+	tar czf $(TARBALL_DIR)/$(SOURCE_TGZ)  -C $(TOPDIR)  src/ rebar.config LICENSE
 	cp $(TOPDIR)/$(SOURCE_TGZ) SOURCES
 	rm $(TOPDIR)/$(SOURCE_TGZ)
 	cp erlang-sd_notify.spec SPECS

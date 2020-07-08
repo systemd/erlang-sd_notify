@@ -1,6 +1,8 @@
 %global realname sd_notify
 %global upstream systemd
 %global upstream_version 1.0
+%global debug_package %{nil}
+%global output_dir _build/default/lib/sd_notify/ebin
 
 
 
@@ -23,13 +25,13 @@ BuildRequires:	erlang-rebar
 %setup  -c .
 
 %build
-rebar compile
+rebar3 compile
 
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
-install -m 644 -p ebin/%{realname}.app $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
-install -m 644 -p ebin/%{realname}.beam $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
+install -m 644 -p %{output_dir}/%{realname}.app $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
+install -m 644 -p %{output_dir}/%{realname}.beam $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
 
 
 %files
@@ -41,6 +43,9 @@ install -m 644 -p ebin/%{realname}.beam $RPM_BUILD_ROOT%{_libdir}/erlang/lib/%{r
 
 
 %changelog
+* Tue Jul 7 2020 Gabriele Santomaggio <g.santomaggio@gmail.com> - 1.1
+- build for 1.1 - Update build for Erlang 23.0
+
 * Thu Apr 13 2017 Gabriele Santomaggio <g.santomaggio@gmail.com> - 1.0
 - build for 1.0
 

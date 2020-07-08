@@ -5,7 +5,7 @@ Priority: optional
 Standards-Version: 3.9.2
 Build-Depends: debhelper (>= 9),
   erlang-dev (>=17.3-dfsg-4),
-  rebar,
+  rebar3,
 
 Package: erlang-sd-notify
 Architecture: any

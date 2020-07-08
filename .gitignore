@@ -12,3 +12,10 @@
 compile_commands.json
 deb-build
 ebin/
+packaging/centos/BUILD/
+packaging/centos/RPMS/
+packaging/centos/SOURCES/
+packaging/centos/SPECS/
+packaging/centos/tmp/
+_build/*
+
