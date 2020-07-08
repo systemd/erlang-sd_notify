@@ -9,7 +9,7 @@ compile:
 	$(REBAR3) compile $(REBAR_FLAGS)
 	
 check: test
-test: compile
+test: clean compile
 	$(REBAR3) eunit $(REBAR_FLAGS)
 
 clean:
