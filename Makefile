@@ -23,6 +23,3 @@ deb:
 
 rpm:
 	cd packaging/centos && $(MAKE) TOPDIR=$(PWD) rpm
-
-clean:
-	echo "clean"
