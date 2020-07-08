@@ -1,6 +1,6 @@
-erlang-sd-notify (1.0-1) UNRELEASED; urgency=medium
+erlang-sd-notify (1.1-1) UNRELEASED; urgency=medium
 
-  * Update for stub for NIF upgrade improvement 
+  * Build for Erlang 23 
 
- -- Gabriele Santomaggio <g.santomaggio@gmail.com>  Thu, 13 Apr 2017 11:54:18 +0000
+ -- Gabriele Santomaggio <g.santomaggio@gmail.com>  Wen, 8 Jul 2020 11:54:18 +0000
 

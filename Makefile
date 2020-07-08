@@ -1,24 +1,28 @@
-REBAR ?= $(shell which rebar 2>/dev/null || which ./rebar)
+REBAR3 ?= $(shell which rebar3 2>/dev/null || which ./rebar3)
+OUT_DIR = _build/default/lib/sd_notify/ebin
 
 REBAR_FLAGS ?=
 
 all: compile
 
 compile:
-	$(REBAR) compile $(REBAR_FLAGS)
-
+	$(REBAR3) compile $(REBAR_FLAGS)
+	
 check: test
 test: compile
-	$(REBAR) eunit $(REBAR_FLAGS)
+	$(REBAR3) eunit $(REBAR_FLAGS)
 
 clean:
-	$(REBAR) clean $(REBAR_FLAGS)
+	$(REBAR3) clean $(REBAR_FLAGS)
 
 dialyzer:
-	$(REBAR) dialyze $(REBAR_FLAGS)
+	$(REBAR3) dialyze $(REBAR_FLAGS)
 
 deb:
 	cd packaging/deb && $(MAKE) TOPDIR=$(PWD) deb
 
 rpm:
 	cd packaging/centos && $(MAKE) TOPDIR=$(PWD) rpm
+
+clean:
+	echo "clean"
